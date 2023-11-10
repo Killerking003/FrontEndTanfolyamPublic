@@ -4,22 +4,25 @@
 
 <head>
     <meta charset="utf-8">
-    <title>HTML teszt oldal</title>
+    <title>HTML HF</title>
     <link rel="shortcut icon" href="src/assets/html.png">
-    <!-- <link rel="stylesheet" href="src/Styles/styles.css"> */  - ez majd késöbb kell-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/Styles/style.css"> 
 </head>
 
 <body>
-    <h1 id="header">Mit csinál egy webfejlesztő?</h1>
+    <h1 id="headerOne"><img src="src/assets/code_icon.svg" alt="kepegy"> Mit csinál egy webfejlesztő?</h1>
 
-    <p>Ha nem akarsz olvasni, mehetünk a footerre is. <a href="#footer">Katt ide!</a><p>
-    
-    <p><u>További linkek:</u></p>       
-    <nav>
-        <a href="#articleTwo">1. Mi a különbség a webdesigner és a webfejlesztő között?</a>
-        <br>
-        <a href="#articleThree">2. Hogyan zajlik egy webdesign projekt?</a>
-    </nav> 
+    <div class="selectArticle">
+        <p>Ha nem akarsz olvasni, mehetünk a footerre is. <button onclick="location.href='#footer'" type="button">Katt ide</button><p>
+        
+        <p><u>További linkek:</u></p>       
+            <nav>
+                <button onclick="location.href='#articleTwo'" type="button">1. Mi a különbség a webdesigner és a webfejlesztő között?</button>
+                <br>
+                <button onclick="location.href='#articleThree'" type="button">2. Hogyan zajlik egy webdesign projekt?</button>
+            </nav> 
+    </div>
 
 
     <div id="articleOne">
@@ -48,6 +51,7 @@
             foglalkoznak. Az adatbázis-kezelők felelősek az adatbázis-tervezésért, az adatok betöltéséért, az adatok ű
             lekérdezéséért és a felhasználói jogosultságok kezeléséért.
         </p>
+        <hr>
             <blockquote>
                 <i>Összességében a webfejlesztők fontos szerepet töltenek be a digitális világban. Ők azok, akik lehetővé 
                 teszik, hogy a webalkalmazások és weboldalak működjenek, és a felhasználók számára intuitív és kényelmes 
@@ -58,6 +62,7 @@
 
     <div id="articleTwo">
         <h2>1. Mi a különbség a webdesigner és a webfejlesztő között?</h2>
+        <hr>
         <p class="paragteszt">
             A webdesigner és a webfejlesztő két különböző szakma a webalkalmazások és weboldalak fejlesztésében. Bár a 
             két szakma hasonló területeken dolgozik, mint például a HTML, a CSS és a JavaScript programozási nyelvek, a 
@@ -85,6 +90,7 @@
 
     <div id="articleThree">
         <h2>2. Hogyan zajlik egy webdesign projekt?</h2>
+        <hr>
         <p class="paragteszt">
             Egy web design projekt általában a következő lépésekből áll:
             <br>
@@ -109,14 +115,54 @@
             hogy minden jól működik. Az általános tesztelés mellett a webdesigner teszteli a weboldalt különböző böngészőkben és készülékeken is. Amennyiben talál 
             valamilyen hibát, azokat kijavítja és optimalizálja a honlapot.</span>
         </p>
-        <hr>
     </div>
 
+    <div class="picture">
+        <h2>A CSS kód</h2>  
+        <hr>
+        <p>A kép címe: CSS kód</p>  
+        <img src="src/assets/code.png" alt="kep">
+    </div>
+    
+    <br>
+
+    <div class="formOne"> <!-- Error: Bad value for attribute action on element form: Must be non-empty - ezt a validátorok hibának jelzik, de Csabi azt kérte maradjon üres! - Rendes mezőellenőrzések, majd javascriptben kellenek késöbb -->
+        <form action="">
+            <h2 id="headerForm">Cikk küldése ismerősnek</h2>
+            <div>
+                <label for="nevImput">Név:</label>
+                <input type="text" name="nev" id="nevImput" maxlength="30" placeholder="Teszt Elek" required> <!--kötelező mező-->
+            </div>
+            <div>
+                <label for="telInput">Telefonszám:</label>
+                <input type="tel" name="telefonszam" id="telInput" maxlength="12" placeholder="+36703002020">
+            </div>
+            <div>
+                <label for="emailInput">Email cím:</label>
+                <input type="email" name="email" id="emailInput" maxlength="100" placeholder="teszt@teszt.hu" required> <!--kötelező mező-->
+            </div>
+            <div>
+                <label for="koraInput">Kora:</label>
+                <input type="number" name="kora" id="koraInput" max="120" placeholder="99">
+            </div>
+            <div class="uzenetArea">
+                <label for="uzenetInput">Üzenet:</label>
+                <textarea name="uzenet" id="uzenetInput" maxlength="80" placeholder="Írj be valamit... max 80 karakter"></textarea>
+            </div>
+            <div id="submitID">
+                <button type="submit">Küldés</button>
+            </div>    
+        </form>
+    </div>    
+
     <footer id="footer">
-        <p>© 2023 Tamás Molnár - All Rights Reserved.</p>
-        <time dateTime="2023-10-25">Date Time When Created - 2023-10-25 -</time> <!-- ekkor készült-->
-        <br>
-        <a href="#header">Vissza az elejére.</a>
+            <hr>
+            <p>Én vagyok a FOOTER</p>
+            <hr>
+            <p>© 2023 Tamás Molnár - All Rights Reserved.</p>
+            <div class="visszaBtn">
+                <button onclick="location.href='#headerOne'" type="button">Vissza az elejére</button>  
+            </div>  
     </footer>
 
 </body>
