@@ -5,20 +5,20 @@
 <head>
     <meta charset="utf-8">
     <title>HTML HF</title>
-    <icon rel="shortcut icon" href="src/assets/html.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link id="theme" rel="stylesheet" type="text/css" href="src/Styles/style.css"> 
 </head>
 
 <body>
-    <h1 id="headerOne"><img src="src/assets/code_icon.svg" alt="kepegy"> Mit csinál egy webfejlesztő?
     <div class="stylesBtnTeam">
-        <button id="darkStyle" onclick="toggleTheme('src/Styles/darkStyle.css')">Darkstyle</button> 
-        <button id="lightStyle" onclick="toggleTheme('src/Styles/style.css')">LightStyle</button> 
+        <h1 id="headerOne"><img src="src/assets/code_icon.svg" alt="kepegy"> Mit csinál egy webfejlesztő?</h1>  
     </div>
-    </h1>
+
     
     <div class="selectArticle">
+        <p>Itt tudsz stílust váltani: </p>
+        <button id="darkStyle" onclick="toggleTheme('src/Styles/darkStyle.css')" >Darkstyle</button> 
+        <button id="lightStyle" onclick="toggleTheme('src/Styles/style.css')">LightStyle</button>
         <p>Ha nem akarsz olvasni, mehetünk a footerre is. <button onclick="location.href='#footer'" type="button">Katt ide</button></p>
         
         <p><u>További linkek:</u></p>       
@@ -170,17 +170,15 @@
             </div>  
     </footer>
 
+    <script> 
+        function toggleTheme(value) { 
+            var sheets = document 
+                .getElementsByTagName('link'); 
+            sheets[0].href = value; 
+        } 
+    </script> 
+
 </body>
-
-
-
-<script> 
-    function toggleTheme(value) { 
-        var sheets = document 
-            .getElementsByTagName('link'); 
-        sheets[0].href = value; 
-    } 
-</script> 
 
 </html>
 
