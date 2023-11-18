@@ -159,7 +159,6 @@ button {
 .picture img {
     display: inline-block;
 	position: relative;
-    /*padding: 170px 70px;*/
 	width: 80%;
 	padding-bottom: 1%; 
 	vertical-align: left; 
@@ -168,7 +167,7 @@ button {
 
 /*Form styles*/
 
-form {
+.FormFriend {
     padding: 12px 16px;
     /*border: 1px solid rgb(124, 124, 124);*/
     background-color: #414040;
@@ -190,7 +189,7 @@ label {
 
 }
 
-form > div {
+Form > div {
     margin-top: 6px;
     margin-bottom: 6px;
 }
@@ -205,7 +204,7 @@ input {
     height:50%;
 }
 
-#uzenetInput{
+#messageInput{
     height: 50px;
 }
 
@@ -242,16 +241,16 @@ textarea {
     max-height: 70px;
 }
 
-.uzenetArea label {
+.messageArea label {
     vertical-align:top; /* Üzenet szöveget igazítása*/
 }
 
 /* Media screen - 448 px-nél a hosszát kicsit megnövelem a formnak a responsivitás miatt*/
 @media screen and (max-width: 448px) {
-    form {
+    .FormFriend {
             padding: 12px 16px;
             border: 1px solid rgb(124, 124, 124);
-            background-color: #257565;
+            background-color: #414040;
             border-radius: 0px;
             height: 380px;
             padding: 20px;

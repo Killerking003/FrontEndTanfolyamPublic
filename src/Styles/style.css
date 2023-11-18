@@ -163,7 +163,7 @@ button {
 
 /*Form styles*/
 
-form {
+.FormFriend {
     padding: 12px 16px;
     /*border: 1px solid rgb(124, 124, 124);*/
     background-color: #257565;
@@ -200,7 +200,7 @@ input {
     height:50%;
 }
 
-#uzenetInput{
+#messageInput{
     height: 50px;
 }
 
@@ -237,13 +237,13 @@ textarea {
     max-height: 70px;
 }
 
-.uzenetArea label {
+.messageArea label {
     vertical-align:top; /* Üzenet szöveget igazítása*/
 }
 
 /* Media screen - 448 px-nél a hosszát kicsit megnövelem a formnak a responsivitás miatt*/
 @media screen and (max-width: 448px) {
-    form {
+    .FormFriend {
             padding: 12px 16px;
             border: 1px solid rgb(124, 124, 124);
             background-color: #257565;

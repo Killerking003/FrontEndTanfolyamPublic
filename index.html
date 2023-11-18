@@ -6,19 +6,19 @@
     <meta charset="utf-8">
     <title>HTML HF</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link id="theme" rel="stylesheet" type="text/css" href="src/Styles/style.css"> 
+    <link id="theme" rel="stylesheet" type="text/css" href="src/styles/style.css"> 
 </head>
 
 <body>
     <div class="stylesBtnTeam">
-        <h1 id="headerOne"><img src="src/assets/code_icon.svg" alt="kepegy"> Mit csinál egy webfejlesztő?</h1>  
+        <h1 id="headerOne"><img src="src/assets/code_icon.svg" alt="Svg kód ikon"> Mit csinál egy webfejlesztő?</h1>  
     </div>
 
     
     <div class="selectArticle">
         <p>Itt tudsz stílust váltani: </p>
-        <button id="darkStyle" onclick="toggleTheme('src/Styles/darkStyle.css')" >Darkstyle</button> 
-        <button id="lightStyle" onclick="toggleTheme('src/Styles/style.css')">LightStyle</button>
+        <button id="darkStyle" onclick="toggleTheme('src/styles/darkStyle.css')" >Darkstyle</button> 
+        <button id="lightStyle" onclick="toggleTheme('src/styles/style.css')">LightStyle</button>
         <p>Ha nem akarsz olvasni, mehetünk a footerre is. <button onclick="location.href='#footer'" type="button">Katt ide</button></p>
         
         <p><u>További linkek:</u></p>       
@@ -132,11 +132,11 @@
     <br>
 
     <div class="formOne"> <!-- Error: Bad value for attribute action on element form: Must be non-empty - ezt a validátorok hibának jelzik, de Csabi azt kérte maradjon üres! - Rendes mezőellenőrzések, majd javascriptben kellenek késöbb -->
-        <form action="">
+        <form class="FormFriend" action="">
             <h2 id="headerForm">Cikk küldése ismerősnek</h2>
             <div>
-                <label for="nevImput">Név:</label>
-                <input type="text" name="nev" id="nevImput" maxlength="30" placeholder="Teszt Elek" required> <!--kötelező mező-->
+                <label for="nameImput">Név:</label>
+                <input type="text" name="nev" id="nameImput" maxlength="30" placeholder="Teszt Elek" required> <!--kötelező mező-->
             </div>
             <div>
                 <label for="telInput">Telefonszám:</label>
@@ -147,12 +147,12 @@
                 <input type="email" name="email" id="emailInput" maxlength="100" placeholder="teszt@teszt.hu" required> <!--kötelező mező-->
             </div>
             <div>
-                <label for="koraInput">Kora:</label>
-                <input type="number" name="kora" id="koraInput" max="120" placeholder="99">
+                <label for="ageInput">Kora:</label>
+                <input type="number" name="kora" id="ageInput" max="120" placeholder="99">
             </div>
-            <div class="uzenetArea">
-                <label for="uzenetInput">Üzenet:</label>
-                <textarea name="uzenet" id="uzenetInput" maxlength="80" placeholder="Írj be valamit... max 80 karakter"></textarea>
+            <div class="messageArea">
+                <label for="messageInput">Üzenet:</label>
+                <textarea name="message" id="messageInput" maxlength="80" placeholder="Írj be valamit... max 80 karakter"></textarea>
             </div>
             <div id="submitID">
                 <button type="submit">Küldés</button>
