@@ -4,12 +4,21 @@ body {
     background:linear-gradient(to left, #aaaaaa, rgb(190, 189, 189), #949899);
 }
 
+
+/*Variables - Változók - itt definiálom előre a színeket - még nincs mindenhova átvezetve ezért a dark mód pure css megoldása is folyamatban van...addig amarad js-es link váltás*/
+:root {
+    --white: #f9f9f9;
+    --green: #257565;
+    --gray: #85888C;
+    --selectedColor: rgb(175, 243, 4);
+} 
+
 /*Header and footer styles*/
 #headerOne {
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 10px 30px;
-    background-color:#257565;
+    background-color: var(--green);
     color: #fff;
     /* background-image: 
                       linear-gradient(-160deg, rgba(134, 34, 34, 0) 95%, rgb(255, 255, 255) 95%),
@@ -69,11 +78,14 @@ body {
     padding: 12px 16px;
     font-weight: 300;
     line-height: 15px;
-    margin-top: 0px;
 }
 
 .selectArticle u {
     font-weight: 600;
+}
+
+.selectArticle p {
+    margin-top: 10px;
 }
 
 nav button {
@@ -86,14 +98,9 @@ nav button {
     cursor: pointer;
     font-size: 16px;
     height: 53px;
-    margin-top: 10px;
     outline: 0;
     text-align: left;
-}
-
-nav p {
-    text-align: center;
-    font-weight: 600;
+    
 }
 
 button {
@@ -108,6 +115,7 @@ button {
     margin-top: 10px;
     outline: 0;
     text-align: left;
+    padding: 4px;
 }
 
 
@@ -153,12 +161,12 @@ button {
 
 .picture img {
     display: inline-block;
-	position: relative;
     /*padding: 170px 70px;*/
 	width: 80%;
 	padding-bottom: 1%; 
 	vertical-align: left; 
 	overflow: hidden; 
+    z-index: 0;
 }
 
 /*Form styles*/
@@ -166,7 +174,7 @@ button {
 .FormFriend {
     padding: 12px 16px;
     /*border: 1px solid rgb(124, 124, 124);*/
-    background-color: #257565;
+    background-color: var(--green);
     /*border-radius: 0;*/
     height: 285px;
     padding: 20px;
@@ -241,19 +249,9 @@ textarea {
     vertical-align:top; /* Üzenet szöveget igazítása*/
 }
 
-/* Media screen - 448 px-nél a hosszát kicsit megnövelem a formnak a responsivitás miatt*/
-@media screen and (max-width: 448px) {
-    .FormFriend {
-            padding: 12px 16px;
-            border: 1px solid rgb(124, 124, 124);
-            background-color: #257565;
-            border-radius: 0px;
-            height: 380px;
-            padding: 20px;
-        }
-    }
 
-/* Dark and light style*/
+
+/* Dark and light style - in progress :)*/
 
 .stylesBtnTeam {
     margin-top: 10px  ;
@@ -284,3 +282,167 @@ textarea {
 
 
 
+/* Nav bar property etc*/
+
+  /* törlés */
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  body{
+      background-color: var(--white);
+      font-family: "Poppins", sans-serif;
+  }
+  a{
+      text-decoration: none;
+  }
+  ul{
+      list-style: none;
+  }
+
+  /* Header */
+  .header{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: var(--green);
+      box-shadow: 1px 1px 5px 0px var(--gray);
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-image: linear-gradient(-180deg, rgba(134, 34, 34, 0) 94%, rgb(255, 255, 255) 110%); /* Rajzolok egy szép élet neki,  smooth*/
+  }
+  /* Logo */
+  .logo{
+      display: inline-block;
+      color: var(--white);
+      font-size: 60px;
+      margin-left: 10px;
+      
+  }
+
+  /* Nav menu */
+  .nav{
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      background-color: var(--green);
+      overflow: hidden;
+      z-index: 5;
+
+  }
+  .menu a{
+      display: block;
+      padding: 30px;
+      color: var(--white);
+  }
+  .menu a:hover{
+      background-color: var(--gray);
+  }
+  .nav{
+      max-height: 0;
+      transition: max-height .4s ease-out; /*a hambuurger menü nyitásának sebességet itt lehet meghatározni*/
+  }
+
+    /* Menu Ikon */
+  .hamb{
+      cursor: pointer;
+      float: right;
+      padding: 35px 55px;
+  }
+
+  .hamb-line {
+      background: var(--white);
+      display: block;
+      height: 2px;
+      position: relative;
+      width: 24px;
+
+  } 
+
+  .hamb-line::before,
+  .hamb-line::after{
+      background: var(--white);
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      transition: all .2s ease-out;
+      width: 100%;
+  }
+  .hamb-line::before{
+      top: 5px;
+  }
+  .hamb-line::after{
+      top: -5px;
+  }
+
+  .side-menu {
+      display: none;
+  } 
+
+  .side-menu:checked ~ nav{
+      max-height: 100%;
+  }
+  .side-menu:checked ~ .hamb .hamb-line {
+      background: transparent;
+  }
+  .side-menu:checked ~ .hamb .hamb-line::before {
+      transform: rotate(-45deg);
+      top:0;
+  }
+  .side-menu:checked ~ .hamb .hamb-line::after {
+      transform: rotate(45deg);
+      top:0;
+  }
+
+  /* Media screen - nav menu, pic, form responsive */
+  @media (min-width: 792px) {
+      .nav{
+          max-height: none;
+          top: 0;
+          position: relative;
+          float: right;
+          width: fit-content;
+          background-color: transparent;
+
+      }
+      .menu li{
+          float: left;
+      }
+      .menu a:hover{
+          background-color: transparent;
+          color: var(--gray);
+
+      }
+
+      .hamb{
+          display: none;
+      }
+
+      
+  }
+
+  @media (max-width: 792px) {
+    .menu a{
+        display: block;
+        padding: 30px;
+        color: var(--white);
+        background-image: linear-gradient(-180deg, rgba(134, 34, 34, 0) 94%, rgb(255, 255, 255) 110%); /* Rajzolok egy szép élet neki,  smooth*/
+        }
+
+
+  @media screen and (max-width: 448px) {
+    .FormFriend {
+            padding: 12px 16px;
+            border: 1px solid rgb(124, 124, 124);
+            background-color: #257565;
+            border-radius: 0px;
+            height: 380px;
+            padding: 20px;
+        }
+    }
+
+
+  }
