@@ -1,7 +1,7 @@
 body {
+    transition: background-color 0.5s, color 0.5s;
+    color: #000000;
     background-color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    background:linear-gradient(to left, #aaaaaa, rgb(190, 189, 189), #949899);
 }
 
 
@@ -9,9 +9,121 @@ body {
 :root {
     --white: #f9f9f9;
     --green: #257565;
-    --gray: #85888C;
+    --gray: #5b5c5d;
+    --black: #000000;
     --selectedColor: rgb(175, 243, 4);
 } 
+
+
+/* Dark mód definiálás*/
+
+
+#darkModeToggle {
+    display: none;
+}
+
+#toggleLabel {
+    background-color: var(--green);
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 0px;
+    user-select: none;
+    margin: 0px;
+    background-image: linear-gradient(-180deg, rgba(134, 34, 34, 0) 94%, rgb(255, 255, 255) 110%);
+}
+
+#toggleLabel::before {
+    content: "☀️";
+    margin-right: 8px;
+}
+
+#darkModeToggle:checked + #toggleLabel {
+    background-color: var(--black);
+}
+
+#darkModeToggle:checked + #toggleLabel::before {
+    content: "🌙";
+}
+
+#darkModeToggle:checked~.contentOne {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~.contentOne button {
+    background-color: var(--white);
+    color: var(--black)
+}
+
+
+#darkModeToggle:checked~.header {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~.nav .menu  {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~#articleOne {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~#articleTwo {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~#articleThree {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~.picture {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~.formOne {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~.formOne button {
+    background-color: var(--white);
+    color: var(--black)
+}
+
+#darkModeToggle:checked~#footer {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~#footer button {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+
+
+#darkModeToggle:checked~#toggleLabel img {
+    filter: invert(20%) sepia(243%) saturate(1576%) hue-rotate(-21deg) brightness(997%) contrast(73%);
+}
+
+#toggleLabel span img {
+    position: relative;
+    display: inline-block;
+    left: 20px;
+    top: 8px;
+    width: 24px;
+    height: 24px;
+}
+
 
 /*Header and footer styles*/
 #headerOne {
@@ -70,23 +182,25 @@ body {
 
 /* Article select */
 
-.selectArticle {
+
+.contentOne {
     margin-top: 0px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background-color: #4e4c4c;
+    background-color: #777777;
     color: #fff;
     padding: 12px 16px;
     font-weight: 300;
     line-height: 15px;
 }
 
-.selectArticle u {
+.contentOne u {
     font-weight: 600;
 }
 
-.selectArticle p {
+.contentOne p {
     margin-top: 10px;
 }
+
 
 nav button {
     display: inline-block;
@@ -171,10 +285,13 @@ button {
 
 /*Form styles*/
 
+.formOne {
+    background-color: var(--green);
+}
+
 .FormFriend {
     padding: 12px 16px;
     /*border: 1px solid rgb(124, 124, 124);*/
-    background-color: var(--green);
     /*border-radius: 0;*/
     height: 285px;
     padding: 20px;
@@ -249,37 +366,10 @@ textarea {
     vertical-align:top; /* Üzenet szöveget igazítása*/
 }
 
-
-
-/* Dark and light style - in progress :)*/
-
 .stylesBtnTeam {
     margin-top: 10px  ;
     
 }
-
-#darkStyle {
-    background-color: rgb(57, 57, 57);
-    color: #fff;
-}
-
-#lightStyle {
-    background-color: rgb(155, 155, 155);
-    color: #fff;
-}
-
-#lightStyle:focus {
-    outline-color: transparent;
-    outline-style:solid;
-    box-shadow: 0 0 0 1px #ffffff;
-}
-
-#darkStyle:focus {
-    outline-color: transparent;
-    outline-style:solid;
-    box-shadow: 0 0 0 1px #ffffff;
-}
-
 
 
 /* Nav bar property etc*/
@@ -291,7 +381,6 @@ textarea {
       box-sizing: border-box;
   }
   body{
-      background-color: var(--white);
       font-family: "Poppins", sans-serif;
   }
   a{
@@ -327,7 +416,7 @@ textarea {
       width: 100%;
       height: 100%;
       position: fixed;
-      background-color: var(--green);
+      background-color: var(--gray);
       overflow: hidden;
       z-index: 5;
 
@@ -437,7 +526,6 @@ textarea {
     .FormFriend {
             padding: 12px 16px;
             border: 1px solid rgb(124, 124, 124);
-            background-color: #257565;
             border-radius: 0px;
             height: 380px;
             padding: 20px;

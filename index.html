@@ -10,6 +10,17 @@
 </head>
 
 <body>
+    <input class="darkmode" type="checkbox" id="darkModeToggle"></input>
+    <label for="darkModeToggle" id="toggleLabel">Dark Mód<span>
+        <img src="src/svg/bat.svg">
+        <img src="src/svg/bat.svg">
+        <img src="src/svg/bat.svg">
+        <img src="src/svg/bat.svg">
+        <img src="src/svg/bat.svg">
+        <img src="src/svg/bat.svg">
+        <img src="src/svg/bat.svg">
+        <img src="src/svg/bat.svg">
+    </span></label>
     <header class="header">
         <a href="index.html" class="logo">NAV</a>
         <!-- icon -->
@@ -23,12 +34,7 @@
             </ul>
         </nav>
     </header>
-
-    <div class="selectArticle" id="top">
-        <p>Itt tudsz stílust váltani: </p>
-        <button id="darkStyle" onclick="toggleTheme('src/Styles/darkStyle.css')" >Darkstyle</button> 
-        <button id="lightStyle" onclick="toggleTheme('src/Styles/style.css')">LightStyle</button>
-
+    <div class="contentOne">
         <p>Ha nem akarsz olvasni, mehetünk a footerre is. <button onclick="location.href='#footer'" type="button">Katt ide</button></p>
         
         <p><u>További linkek:</u></p>       
@@ -38,8 +44,6 @@
                 <button onclick="location.href='#articleThree'" type="button">2. Hogyan zajlik egy webdesign projekt?</button>
             </nav> 
     </div>
-
-
     <div id="articleOne">
         <p class="parag">A <b>front-end webfejlesztők</b> azok, akik a weboldal felhasználói felületéért felelnek. 
             Ők azok, akik az alkalmazások és weboldalak különböző részeinek kinézetét, kezelőfelületét
@@ -179,15 +183,6 @@
                 <button onclick="location.href='#top'" type="button">Vissza az elejére</button>  
             </div>  
     </footer>
-
-    <script> 
-        function toggleTheme(value) { 
-            var sheets = document 
-                .getElementsByTagName('link'); 
-            sheets[0].href = value; 
-        } 
-    </script> 
-
 </body>
 
 </html>
