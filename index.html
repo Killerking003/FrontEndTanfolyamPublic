@@ -6,21 +6,29 @@
     <meta charset="utf-8">
     <title>HTML HF</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link id="theme" rel="stylesheet" type="text/css" href="src/Styles/style.css"> 
+    
 </head>
 
 <body>
-    <input class="darkmode" type="checkbox" id="darkModeToggle"></input>
-    <label for="darkModeToggle" id="toggleLabel">Dark Mód<span>
-        <img src="src/svg/bat.svg">
-        <img src="src/svg/bat.svg">
-        <img src="src/svg/bat.svg">
-        <img src="src/svg/bat.svg">
-        <img src="src/svg/bat.svg">
-        <img src="src/svg/bat.svg">
-        <img src="src/svg/bat.svg">
-        <img src="src/svg/bat.svg">
+    <!-- <img src="src/svg/bat.svg"> -->
+    <input type="checkbox" id="resetToggle" onchange="resetInputs()"></input>
+    <label for="resetToggle" id="greentogglelabel">Default<span>
     </span></label>
+
+    <input class="darkmode" type="checkbox" onchange="toggleInput(1)" id="darkModeToggle"></input>
+    <label for="darkModeToggle" id="toggleLabel">Dark<span>
+    </span></label>
+    <input class="hiddenInput" type="text" id="darkModeInput" disabled>
+    
+    <input class="pinkmode" type="checkbox" onchange="toggleInput(2)" id="pinkModeToggle"></input>
+    <label for="pinkModeToggle" id="pinktoggleLabel">Pink<span>
+    </span></label>
+    <input class="hiddenInput" type="text" id="pinkModeInput" disabled>
+
     <header class="header">
         <a href="index.html" class="logo">NAV</a>
         <!-- icon -->
@@ -150,40 +158,79 @@
             <h2 id="headerForm">Cikk küldése ismerősnek</h2>
             <div>
                 <label for="nameInput">Név:</label>
-                <input type="text" name="nev" id="nameInput" maxlength="30" placeholder="Teszt Elek" required> <!--kötelező mező-->
+                <input type="text" name="nev" id="nameInput" class="form-control" maxlength="30" placeholder="Teszt Elek" required> <!--kötelező mező-->
             </div>
             <div>
                 <label for="telInput">Telefonszám:</label>
-                <input type="tel" name="telefonszam" id="telInput" maxlength="12" placeholder="+36703002020">
+                <input type="tel" name="telefonszam" id="telInput" class="form-control" maxlength="12" placeholder="+36703002020">
             </div>
             <div>
                 <label for="emailInput">Email cím:</label>
-                <input type="email" name="email" id="emailInput" maxlength="100" placeholder="teszt@teszt.hu" required> <!--kötelező mező-->
+                <input type="email" name="email" id="emailInput" class="form-control" maxlength="100" placeholder="teszt@teszt.hu" required> <!--kötelező mező-->
             </div>
             <div>
                 <label for="ageInput">Kora:</label>
-                <input type="number" name="kora" id="ageInput" max="120" placeholder="99">
+                <input type="number" name="kora" id="ageInput" class="form-control" max="120" placeholder="99">
             </div>
             <div class="messageArea">
                 <label for="messageInput">Üzenet:</label>
-                <textarea name="message" id="messageInput" maxlength="80" placeholder="Írj be valamit... max 80 karakter"></textarea>
+                <textarea name="message" id="messageInput" maxlength="80"  class="form-control" placeholder="Írj be valamit... max 80 karakter"></textarea>
             </div>
             <div id="submitID">
-                <button type="submit">Küldés</button>
+                <button type="submit" class="btn btn-danger">Küldés</button>
             </div>    
         </form>
     </div>    
-
+    <br>
+    
     <footer id="footer">
             <hr>
             <p>Én vagyok a FOOTER</p>
             <hr>
             <p>© 2023 Tamás Molnár - All Rights Reserved.</p>
             <div class="visszaBtn">
-                <button onclick="location.href='#top'" type="button">Vissza az elejére</button>  
+                <div class="box" type="button"><span><a href="#top">Home</a></span></div>
             </div>  
     </footer>
+
+    <script>
+        //Itt a gomboknál kelett már egy kis js-is, de a többi tiszta css.    
+
+        function toggleInput(inputNumber) {
+            var input = document.getElementById((inputNumber === 1 ? 'darkMode' : 'pinkMode') + 'Input');
+            var checkbox = document.getElementById((inputNumber === 1 ? 'darkMode' : 'pinkMode') + 'Toggle');
+
+            input.disabled = !checkbox.checked;
+
+            // Tiltás feloldása a másik input mezőnél
+            var otherInputNumber = inputNumber === 1 ? 2 : 1;
+            var otherInput = document.getElementById((otherInputNumber === 1 ? 'darkMode' : 'pinkMode') + 'Input');
+            var otherCheckbox = document.getElementById((otherInputNumber === 1 ? 'darkMode' : 'pinkMode') + 'Toggle');
+            otherInput.disabled = checkbox.checked;
+            otherCheckbox.checked = !checkbox.checked;
+
+            // Ha a harmadik checkbox is be van jelölve, tiltsuk le mindkét első checkboxot
+            if (document.getElementById('resetToggle').checked) {
+                document.getElementById('darkModeInput').disabled = true;
+                document.getElementById('darkModeToggle').checked = false;
+
+                document.getElementById('pinkModeInput').disabled = true;
+                document.getElementById('pinkModeToggle').checked = false;
+            }
+        }
+
+        function resetInputs() {
+            document.getElementById('darkModeInput').disabled = true;
+            document.getElementById('darkModeToggle').checked = false;
+
+            document.getElementById('pinkModeInput').disabled = true;
+            document.getElementById('pinkModeToggle').checked = false;
+
+            document.getElementById('resetToggle').checked = false;
+        }
+    </script>
 </body>
+
 
 </html>
 
