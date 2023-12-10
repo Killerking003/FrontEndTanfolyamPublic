@@ -72,7 +72,7 @@ body {
 	height:25px;
 	bottom: 1060px;
 	right: 0px;
-    background-color: #417e3f;
+    background-color: var(--green);
     color: #fff;
     font-size: 15px;
     cursor: pointer;
