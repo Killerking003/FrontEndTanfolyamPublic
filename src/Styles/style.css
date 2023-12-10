@@ -13,6 +13,7 @@ body {
     --black: #000000;
     --orange: #df9945;
     --Pink: #cd5dda;
+    --grayart: #cfcfcf;
     --selectedColor: rgb(142, 181, 44);
     color-scheme: dark;
     color-scheme: light;
@@ -22,7 +23,7 @@ body {
     display: none;
 }
 
-/* Green default */
+/* default */
 
 #resetToggle {
     display: none;
@@ -53,11 +54,11 @@ body {
 }
 
 #resetToggle:checked + #greentogglelabel {
-    background-color: var(--black);
+    background-color: rgb(52, 52, 52);
 }
 
 
-/* Dark mód definiálás*/
+/* Green mód definiálás*/
 
 
 #darkModeToggle {
@@ -71,7 +72,7 @@ body {
 	height:25px;
 	bottom: 1060px;
 	right: 0px;
-    background-color: var(--green);
+    background-color: #417e3f;
     color: #fff;
     font-size: 15px;
     cursor: pointer;
@@ -89,7 +90,7 @@ body {
 }
 
 #darkModeToggle:checked + #toggleLabel {
-    background-color: var(--black);
+    background-color: #417e3f;
 }
 
 #darkModeToggle:checked + #toggleLabel::before {
@@ -219,7 +220,7 @@ body {
 }
 
 #pinkModeToggle:checked~.contentOne button {
-    background-color: var(--white);
+    background-color: var(--grayart);
     color: var(--black)
 }
 
@@ -260,7 +261,7 @@ body {
 }
 
 #pinkModeToggle:checked~.formOne button {
-    background-color: var(--white);
+    background-color: var(--grayart);
     color: var(--black)
 }
 
@@ -397,7 +398,7 @@ button {
 #articleOne {
     margin-top: 10px;
     margin-bottom: 20px;
-    background-color: #e6e5e5;
+    background-color: var(--grayart);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     padding: 10px 30px;
@@ -406,7 +407,7 @@ button {
 #articleTwo {
     margin-top: 10px;
     margin-bottom: 20px;
-    background-color: #e6e5e5;
+    background-color: var(--grayart);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     padding: 10px 30px;
@@ -416,7 +417,7 @@ button {
 #articleThree {
     margin-top: 10px;
     margin-bottom: 20px;
-    background-color: #e6e5e5;
+    background-color: var(--grayart);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     padding: 10px 30px;
@@ -425,7 +426,7 @@ button {
 /* Pic style*/
 
 .picture {
-    background-color: #e6e5e5;
+    background-color: var(--grayart);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 60%;
@@ -827,9 +828,24 @@ textarea {
   /* A dark és a Pink mód lebegő gombokkal állítható az oldalon. A default gomb, pedig törli az értékeket. Itt viszont a light mód már sémával is működik - devtools - rendering - emulate css media features prefers-color-scheme*/
   @media (prefers-color-scheme: light) {
     :root {
-        --green: #77c9fc;
+        --green: #56b3ed;
         --gray: #929191;
-        --black: var(--white);
+        --black: #417e3f;
         --orange: #c6c6c6;
    }
+ }
+
+ @media (prefers-color-scheme: dark) {
+    :root {
+        --green: #000000;
+        --gray: #000000;
+        --black: #080808;;
+        --orange: #9b9b9b;
+        --grayart: var(--black);
+   }
+
+   body {
+    color:#ffffff;
+   }
+   
  }
