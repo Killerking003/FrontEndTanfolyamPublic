@@ -1,7 +1,288 @@
 body {
+    transition: background-color 0.5s, color 0.5s;
+    color: #000000;
     background-color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    background:linear-gradient(to left, #aaaaaa, rgb(190, 189, 189), #949899);
+}
+
+
+/*Variables - Változók - itt definiálom előre a színeket - még nincs mindenhova átvezetve ezért a dark mód pure css megoldása is folyamatban van...addig amarad js-es link váltás*/
+:root {
+    --white: #f9f9f9;
+    --green: #257565;
+    --gray: #5b5c5d;
+    --black: #000000;
+    --orange: #df9945;
+    --Pink: #cd5dda;
+    --grayart: #cfcfcf;
+    --selectedColor: rgb(142, 181, 44);
+    color-scheme: dark;
+    color-scheme: light;
+} 
+
+.hiddenInput {
+    display: none;
+}
+
+/* default */
+
+#resetToggle {
+    display: none;
+}
+
+#greentogglelabel {
+    border: 1px solid;
+    position:fixed;
+	width:80px;
+	height:25px;
+	bottom: 992px;
+	right: 0px;
+    background-color: var(--green);
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 0px;
+    user-select: none;
+    margin: 10px;
+    padding: 1px;
+    text-align: center;
+    background-image: linear-gradient(-180deg, rgba(134, 34, 34, 0) 94%, rgb(255, 255, 255) 110%);
+}
+
+
+#greentogglelabel:active {
+    color: var(--selectedColor);
+}
+
+#resetToggle:checked + #greentogglelabel {
+    background-color: rgb(52, 52, 52);
+}
+
+
+/* Green mód definiálás*/
+
+
+#darkModeToggle {
+    display: none;
+}
+
+#toggleLabel {
+    border: 1px solid;
+    position:fixed;
+	width:80px;
+	height:25px;
+	bottom: 1060px;
+	right: 0px;
+    background-color: var(--green);
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 0px;
+    user-select: none;
+    margin: 10px;
+    padding: 1px;
+    background-image: linear-gradient(-180deg, rgba(134, 34, 34, 0) 94%, rgb(255, 255, 255) 110%);
+}
+
+
+#toggleLabel::before {
+    content: "☀️";
+    margin-right: 8px;
+}
+
+#darkModeToggle:checked + #toggleLabel {
+    background-color: #417e3f;
+}
+
+#darkModeToggle:checked + #toggleLabel::before {
+    content: "🌙";
+}
+
+#darkModeToggle:checked~.contentOne {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~.contentOne button {
+    background-color: var(--white);
+    color: var(--black)
+}
+
+
+#darkModeToggle:checked~.header {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~.nav .menu  {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~#articleOne {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~#articleTwo {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~#articleThree {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~.picture {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~.formOne {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~.formOne button {
+    background-color: var(--white);
+    color: var(--black)
+}
+
+#darkModeToggle:checked~#footer {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+#darkModeToggle:checked~#footer button {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+
+
+#darkModeToggle:checked~#toggleLabel img {
+    filter: invert(20%) sepia(243%) saturate(1576%) hue-rotate(-21deg) brightness(997%) contrast(73%);
+}
+
+#toggleLabel span img {
+    position: relative;
+    display: inline-block;
+    left: 20px;
+    top: 8px;
+    width: 24px;
+    height: 24px;
+}
+
+
+
+/* Pink mód */
+
+#pinkModeToggle {
+    display: none;
+}
+
+#pinktoggleLabel{
+    border: 1px solid;
+    position:fixed;
+	width:80px;
+	height:25px;
+	bottom: 1025px;
+	right: 0px;
+    background-color: var(--green);
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 0px;
+    user-select: none;
+    margin: 10px;
+    padding: 1px;
+    background-image: linear-gradient(-180deg, rgba(134, 34, 34, 0) 94%, rgb(255, 255, 255) 110%);
+}
+
+
+#pinktoggleLabel::before {
+    content: "☀️";
+    margin-right: 8px;
+}
+
+#pinkModeToggle:checked + #pinktoggleLabel {
+    background-color: var(--Pink);
+}
+
+#pinkModeToggle:checked + #pinktoggleLabel::before {
+    content: "🌙";
+}
+
+
+#pinkModeToggle:checked~.contentOne {
+    background-color: var(--Pink);
+    color: var(--white);
+}
+
+#pinkModeToggle:checked~.contentOne button {
+    background-color: var(--grayart);
+    color: var(--black)
+}
+
+
+#pinkModeToggle:checked~.header {
+    background-color: var(--Pink);
+    color: var(--white);
+}
+
+#pinkModeToggle:checked~.nav .menu  {
+    background-color: var(--Pink);
+    color: var(--white);
+}
+
+#pinkModeToggle:checked~#articleOne {
+    background-color: var(--Pink);
+    color: var(--white);
+}
+
+#pinkModeToggle:checked~#articleTwo {
+    background-color: var(--Pink);
+    color: var(--white);
+}
+
+#pinkModeToggle:checked~#articleThree {
+    background-color: var(--Pink);
+    color: var(--white);
+}
+
+#pinkModeToggle:checked~.picture {
+    background-color: var(--Pink);
+    color: var(--white);
+}
+
+#pinkModeToggle:checked~.formOne {
+    background-color: var(--Pink);
+    color: var(--white);
+}
+
+#pinkModeToggle:checked~.formOne button {
+    background-color: var(--grayart);
+    color: var(--black)
+}
+
+#pinkModeToggle:checked~#footer {
+    background-color: var(--Pink);
+    color: var(--white);
+}
+
+#pinkModeToggle:checked~#footer button {
+    background-color: var(--Pink);
+    color: var(--black);
+}
+
+#pinkModeToggle:checked~#toggleLabel label {
+    background-color: var(--Pink);
+}
+
+
+
+#darkModeToggle:checked~#toggleLabel img {
+    filter: invert(20%) sepia(243%) saturate(1576%) hue-rotate(-21deg) brightness(997%) contrast(73%);
 }
 
 /*Header and footer styles*/
@@ -9,7 +290,7 @@ body {
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 10px 30px;
-    background-color:#257565;
+    background-color: var(--green);
     color: #fff;
     /* background-image: 
                       linear-gradient(-160deg, rgba(134, 34, 34, 0) 95%, rgb(255, 255, 255) 95%),
@@ -29,8 +310,8 @@ body {
 #footer {
     margin-top: 0px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background-color: #4e4c4c;
-    color: #fff;
+    background-color: var(--gray);
+    color: var(--white);
     padding: 12px 16px;
     font-weight: 300;
     line-height: 15px;
@@ -61,24 +342,29 @@ body {
 
 /* Article select */
 
-.selectArticle {
+
+.contentOne {
     margin-top: 0px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background-color: #4e4c4c;
+    background-color: var(--gray);
     color: #fff;
     padding: 12px 16px;
     font-weight: 300;
     line-height: 15px;
-    margin-top: 0px;
 }
 
-.selectArticle u {
+.contentOne u {
     font-weight: 600;
 }
 
+.contentOne p {
+    margin-top: 10px;
+}
+
+
 nav button {
     display: inline-block;
-    background-color: #6092dc;
+    background-color: var(--orange);
     border-radius: 5px;
     border: 0;
     box-sizing: border-box;
@@ -86,18 +372,13 @@ nav button {
     cursor: pointer;
     font-size: 16px;
     height: 53px;
-    margin-top: 10px;
     outline: 0;
     text-align: left;
-}
-
-nav p {
-    text-align: center;
-    font-weight: 600;
+    
 }
 
 button {
-    background-color: #dcc160;
+    background-color: var(--orange);
     border-radius: 5px;
     border: 0;
     box-sizing: border-box;
@@ -108,6 +389,7 @@ button {
     margin-top: 10px;
     outline: 0;
     text-align: left;
+    padding: 4px;
 }
 
 
@@ -116,7 +398,7 @@ button {
 #articleOne {
     margin-top: 10px;
     margin-bottom: 20px;
-    background-color: #e6e5e5;
+    background-color: var(--grayart);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     padding: 10px 30px;
@@ -125,7 +407,7 @@ button {
 #articleTwo {
     margin-top: 10px;
     margin-bottom: 20px;
-    background-color: #e6e5e5;
+    background-color: var(--grayart);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     padding: 10px 30px;
@@ -135,7 +417,7 @@ button {
 #articleThree {
     margin-top: 10px;
     margin-bottom: 20px;
-    background-color: #e6e5e5;
+    background-color: var(--grayart);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     padding: 10px 30px;
@@ -144,7 +426,7 @@ button {
 /* Pic style*/
 
 .picture {
-    background-color: #e6e5e5;
+    background-color: var(--grayart);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 60%;
@@ -153,22 +435,26 @@ button {
 
 .picture img {
     display: inline-block;
-	position: relative;
     /*padding: 170px 70px;*/
 	width: 80%;
 	padding-bottom: 1%; 
 	vertical-align: left; 
 	overflow: hidden; 
+    z-index: 0;
 }
 
 /*Form styles*/
 
+.formOne {
+    background-color: var(--green);
+    margin: 20px 20px;
+}
+
 .FormFriend {
     padding: 12px 16px;
     /*border: 1px solid rgb(124, 124, 124);*/
-    background-color: #257565;
     /*border-radius: 0;*/
-    height: 285px;
+    height: 380px;
     padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -181,6 +467,7 @@ label {
     display: inline-block;
     width: 120px;
     color: #fff;
+    font-size: 16px;
     
 
 }
@@ -200,22 +487,28 @@ input {
     height:50%;
 }
 
+.form-control {
+    display: inline-block;
+    width: 30%;
+    min-width: 240px;
+    max-width: 400px;
+}
+
 #messageInput{
-    height: 50px;
+    height: 100px;
 }
 
 #submitID button {
-    background-color: #dcc160;
+    background-color: var(--orange);
     border-radius: 5px;
     border: 0;
     box-sizing: border-box;
     color: #fff;;
     cursor: pointer;
-    font-size: 18px;
     height: 30px;
-    margin-top: 10px;
-    outline: 0;
-    text-align: left; 
+    margin-top: 0px;
+    outline: 0; 
+    font-weight: 600;
 }
 
 #headerForm {
@@ -231,9 +524,9 @@ textarea {
     box-sizing: border-box;
     color: #000000;
     font-size: 16px;
-    width: 199px;
+    width: 300px;
     height: 10px;
-    max-width: 199px;
+    max-width: 335px;
     max-height: 70px;
 }
 
@@ -241,46 +534,318 @@ textarea {
     vertical-align:top; /* Üzenet szöveget igazítása*/
 }
 
-/* Media screen - 448 px-nél a hosszát kicsit megnövelem a formnak a responsivitás miatt*/
-@media screen and (max-width: 448px) {
-    .FormFriend {
-            padding: 12px 16px;
-            border: 1px solid rgb(124, 124, 124);
-            background-color: #257565;
-            border-radius: 0px;
-            height: 380px;
-            padding: 20px;
-        }
-    }
-
-/* Dark and light style*/
-
 .stylesBtnTeam {
     margin-top: 10px  ;
     
 }
 
-#darkStyle {
-    background-color: rgb(57, 57, 57);
-    color: #fff;
-}
 
-#lightStyle {
-    background-color: rgb(155, 155, 155);
-    color: #fff;
-}
+/* Nav bar property etc*/
 
-#lightStyle:focus {
-    outline-color: transparent;
-    outline-style:solid;
-    box-shadow: 0 0 0 1px #ffffff;
-}
+  /* törlés */
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  body{
+      font-family: "Poppins", sans-serif;
+  }
+  a{
+      text-decoration: none;
+  }
+  ul{
+      list-style: none;
+  }
 
-#darkStyle:focus {
-    outline-color: transparent;
-    outline-style:solid;
-    box-shadow: 0 0 0 1px #ffffff;
-}
+  /* Header */
+  .header{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: var(--green);
+      box-shadow: 1px 1px 5px 0px var(--gray);
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-image: linear-gradient(-180deg, rgba(134, 34, 34, 0) 94%, rgb(255, 255, 255) 110%); /* Rajzolok egy szép élet neki,  smooth*/
+  }
+  /* Logo */
+  .logo{
+      display: inline-block;
+      color: var(--white);
+      font-size: 60px;
+      margin-left: 10px;
+      
+  }
+
+  /* Nav menu */
+  .nav{
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      background-color: var(--gray);
+      overflow: hidden;
+      z-index: 5;
+
+  }
+  .menu a{
+      display: block;
+      padding: 30px;
+      color: var(--white);
+  }
+  .menu a:hover{
+      background-color: var(--gray);
+  }
+  .nav{
+      max-height: 0;
+      transition: max-height .4s ease-out; /*a hambuurger menü nyitásának sebességet itt lehet meghatározni*/
+  }
+
+    /* Menu Ikon */
+  .hamb{
+      color: var(--white);
+      cursor: pointer;
+      float: right;
+      padding: 35px 55px;
+  }
+
+  .hamb-line {
+      background: var(--white);
+      display: block;
+      height: 2px;
+      position: relative;
+      width: 24px;
+
+  } 
+
+  .hamb-line::before,
+  .hamb-line::after{
+      background: var(--white);
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      transition: all .2s ease-out;
+      width: 100%;
+  }
+  .hamb-line::before{
+      top: 5px;
+  }
+  .hamb-line::after{
+      top: -5px;
+  }
+
+  .side-menu {
+      display: none;
+  } 
+
+  .side-menu:checked ~ nav{
+      max-height: 100%;
+  }
+  .side-menu:checked ~ .hamb .hamb-line {
+      background: transparent;
+  }
+  .side-menu:checked ~ .hamb .hamb-line::before {
+      transform: rotate(-45deg);
+      top:0;
+  }
+  .side-menu:checked ~ .hamb .hamb-line::after {
+      transform: rotate(45deg);
+      top:0;
+  }
+
+  /* Media screen - nav menu, pic, form responsive */
+  @media (min-width: 792px) {
+      .nav{
+          max-height: none;
+          top: 0;
+          position: relative;
+          float: right;
+          width: fit-content;
+          background-color: transparent;
+
+      }
+      .menu li{
+          float: left;
+      }
+      .menu a:hover{
+          background-color: transparent;
+          color: var(--gray);
+
+      }
+
+      .hamb{
+          display: none;
+      }
+
+      
+  }
+
+  /*Gomb animáció*/
+  .box {
+    margin: 10px;
+    position: relative;
+    width: 115px;
+    align-items: center;
+    min-height: 50px;
+    background: repeating-conic-gradient(from var(--a) , var(--white) 0%, var(--white) 5%,
+    transparent 5%, transparent 40%, var(--white) 50%);
+    animation: animate 4s linear infinite;
+    border-radius: 20px;
+    z-index: 1;
+    left: -20px;
+  }
+
+  .box span a {
+    color: var(--white);
+    margin: 100px;
+    font-size: 20px;
+    font-weight: 600;
+    z-index: 5;
+    position: relative;
+    left: -69px;
+    top: 16px;
+  }
+
+  @property --a {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  @keyframes animate {
+    0%
+    {
+        --a: 0deg;
+    }
+    100%
+    {
+        --a:360deg;
+    }
+  }
+
+  .box::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background: repeating-conic-gradient(from var(--a) ,#45f3ff 0%, #45f3ff  5%,
+    transparent 5%, transparent 40%, #45f3ff 50%);
+    animation: animate 4s linear infinite; */
+    animation-delay: -1s;
+    border-radius: 20px;
+  }
+  
+  .box::after {
+    content: '';
+    position: absolute;
+    inset: 4px; /* ha vékonyabb szélet akarok neki, itt be tudom állítani*/
+    background: #2d2d39;
+    border-radius: 20px;
+    border: 8px solid #25252b;
+
+  }
+
+  @media (max-width: 792px) {
+    .menu a{
+        display: block;
+        padding: 30px;
+        color: var(--white);
+        background-image: linear-gradient(-180deg, rgba(134, 34, 34, 0) 94%, rgb(255, 255, 255) 110%); /* Rajzolok egy szép élet neki,  smooth*/
+        }
 
 
+  @media screen and (max-width: 494px) {
+    .FormFriend {
+            padding: 12px 16px;
+            border: 1px solid rgb(124, 124, 124);
+            border-radius: 0px;
+            height: 535px;
+            padding: 20px;
+        }
+    }
 
+    #greentogglelabel {
+        border: 1px solid;
+        position:fixed;
+        width:80px;
+        height:25px;
+        bottom: 460px;
+        right: 0px;
+        background-color: var(--green);
+        color: var(--white);
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 0px;
+        user-select: none;
+        margin: 10px;
+        padding: 1px;
+        text-align: center;
+        background-image: linear-gradient(-180deg, rgba(134, 34, 34, 0) 94%, rgb(255, 255, 255) 110%);
+    }
+
+    #toggleLabel {
+        border: 1px solid;
+        position:fixed;
+        width:80px;
+        height:25px;
+        bottom: 540px;
+        right: 0px;
+        background-color: var(--green);
+        color: var(--white);
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 0px;
+        user-select: none;
+        margin: 10px;
+        padding: 1px;
+        background-image: linear-gradient(-180deg, rgba(134, 34, 34, 0) 94%, rgb(255, 255, 255) 110%);
+    }
+
+    #pinktoggleLabel{
+        border: 1px solid;
+        position:fixed;
+        width:80px;
+        height:25px;
+        bottom: 500px;
+        right: 0px;
+        background-color: var(--green);
+        color: var(--white);
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 0px;
+        user-select: none;
+        margin: 10px;
+        padding: 1px;
+        background-image: linear-gradient(-180deg, rgba(134, 34, 34, 0) 94%, rgb(255, 255, 255) 110%);
+    }
+
+  }
+
+  /* Color sémák*/
+  
+  /* A dark és a Pink mód lebegő gombokkal állítható az oldalon. A default gomb, pedig törli az értékeket. Itt viszont a light mód már sémával is működik - devtools - rendering - emulate css media features prefers-color-scheme*/
+  @media (prefers-color-scheme: light) {
+    :root {
+        --green: #56b3ed;
+        --gray: #929191;
+        --black: #417e3f;
+        --orange: #c6c6c6;
+   }
+ }
+
+ @media (prefers-color-scheme: dark) {
+    :root {
+        --green: #000000;
+        --gray: #000000;
+        --black: #080808;;
+        --orange: #9b9b9b;
+        --grayart: var(--black);
+   }
+
+   body {
+    color:#ffffff;
+   }
+   
+ }
