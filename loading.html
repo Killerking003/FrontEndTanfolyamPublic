@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        <div class="waviy">
+          <span style="--i:1">T</span>
+          <span style="--i:2">ö</span>
+          <span style="--i:3">l</span>
+          <span style="--i:4">t</span>
+          <span style="--i:5">ö</span>
+          <span style="--i:6">m</span>
+          <span style="--i:7">:</span>
+          <span style="--i:8">)</span>
+         </div>
+       </body>
+    <style>
+       * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        background-color: #257565;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .waviy {
+        position: relative;
+      }
+      .waviy span {
+        position: relative;
+        display: inline-block;
+        font-size: 40px;
+        color: #fff;
+        text-transform: uppercase;
+        animation: flip 2s infinite;
+        animation-delay: calc(.2s * var(--i))
+      }
+      @keyframes flip {
+        0%,80% {
+          transform: rotateY(360deg) 
+        }
+      }
+    </style>
+</body>
+</html>
