@@ -17,6 +17,10 @@ body {
     --selectedColor: rgb(142, 181, 44);
     color-scheme: dark;
     color-scheme: light;
+    --lightblue: #56b3ed;
+    --whitelight: #929191;
+    --grassgreen: #417e3f;
+    --whitelight: #c6c6c6;
 } 
 
 .hiddenInput {
@@ -306,6 +310,23 @@ body {
     display: inline-block;
     filter: invert(100%) sepia(10%) saturate(76%) hue-rotate(86deg) brightness(100%) contrast(119%);
 }
+
+#readingTime {
+    color: rgb(0, 192, 192);
+}
+
+
+.highlighted {
+    background-color: rgb(215, 215, 3);
+    color: rgb(185, 37, 37);
+    font-weight: 600;
+}
+
+.SearchLabel {
+    padding: 0px 1px;
+    margin-top: 20px;
+}
+
 
 #footer {
     margin-top: 0px;
@@ -671,7 +692,7 @@ textarea {
       }
       .menu a:hover{
           background-color: transparent;
-          color: var(--gray);
+          color: aqua;
 
       }
 
@@ -683,7 +704,7 @@ textarea {
   }
 
   /*Gomb animáció*/
-  .box {
+  /* .box {
     margin: 10px;
     position: relative;
     width: 115px;
@@ -723,7 +744,7 @@ textarea {
     {
         --a:360deg;
     }
-  }
+  } */
 
   .box::before {
     content: '';
@@ -828,10 +849,10 @@ textarea {
   /* A dark és a Pink mód lebegő gombokkal állítható az oldalon. A default gomb, pedig törli az értékeket. Itt viszont a light mód már sémával is működik - devtools - rendering - emulate css media features prefers-color-scheme*/
   @media (prefers-color-scheme: light) {
     :root {
-        --green: #56b3ed;
-        --gray: #929191;
-        --black: #417e3f;
-        --orange: #c6c6c6;
+        --lightblue: #56b3ed;
+        --whitelight: #929191;
+        --grassgreen: #417e3f;
+        --whiteelight: #c6c6c6;
    }
  }
 
