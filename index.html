@@ -199,6 +199,7 @@
         </footer>
     
     <script>
+
         /* Itt a gomboknál kelett már egy kis js-is, de a többi tiszta css. */    
 
         function toggleInput(inputNumber) {
@@ -292,6 +293,46 @@
         function escapeRegExp(string) {
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         }
+
+        //Külső hívás
+   
+        /* Leírása:
+        Javascript segítségével töltsük le az alábbi API
+        endpointról a felhasználólistát, amikor a weboldal
+        betöltődik: https://jsonplaceholder.typicode.com/users.
+        A script válasszon a felhasználók közül
+        véletlenszerűen egyet és a cikk után illessze be, mint
+        "szerző". A következő információkat szükséges
+        megjeleníteni: név, e-mail cím, telefonszám, cégnév.
+        Az e-mail cím legyen link és nyissa meg az
+        alapértelmezett levelezőprogramot, ha kattintunk.
+        */
+
+        //Itt meghívom - (fetch)
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then((response) => response.json())
+            .then((json) => {
+                
+                // Véletlenszerű elemet választok a felhasználó tömbből
+                let randomFelhasznalo = json[Math.floor(Math.random() * json.length)];
+
+                // Megkeresem a cél elemet (cikket), mert ide akarom berakni (articleOne), elmentem az articleOne-t
+                let articleOne = document.getElementById('articleOne');
+
+                // Új elemet létrehozom és elmentem (itt stílust is tudok definiálni és propertyket megadni. Szerzőnél csináltam egy példát rá)
+                let RandomSzerzoElem  = document.createElement('div');
+                RandomSzerzoElem.innerHTML = `
+                    <p style="color:#56b3ed;  font-weight: 600;">Szerző:<p>
+                    <p>Név: ${randomFelhasznalo.name}</p>
+                    <p>E-mail: <a href="mailto:${randomFelhasznalo.email}">${randomFelhasznalo.email}</a></p>
+                    <p>Telefonszám: ${randomFelhasznalo.phone}</p>
+                    <p>Cégnév: ${randomFelhasznalo.company.name}</p>
+                `;
+
+                // Hozzáadom az elemet a articleOne-hoz (az aljára teszi, de lehetne poziciónálni, pl felülre az innerBefore-al --> létrehozáásnál -- ezekről majd beszélni Csabival)
+                articleOne.appendChild(RandomSzerzoElem);
+            })
+
     </script>
 </body>
 
