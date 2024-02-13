@@ -10,17 +10,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link id="theme" rel="stylesheet" type="text/css" href="src/Styles/style.css"> 
-    
-</head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-74XVKHFCES"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-74XVKHFCES"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-74XVKHFCES');
-</script>
+        gtag('config', 'G-74XVKHFCES');
+    </script>
+</head>
 
 <body>
     <!-- <img src="src/svg/bat.svg"> -->
@@ -31,11 +30,13 @@
     <input class="darkmode" type="checkbox" onchange="toggleInput(1)" id="darkModeToggle">
     <label for="darkModeToggle" id="toggleLabel">Green<span>
     </span></label>
+    <label for="darkModeInput" class="hiddenInput">Dark mode</label>
     <input class="hiddenInput" type="text" id="darkModeInput" disabled>
     
     <input class="pinkmode" type="checkbox" onchange="toggleInput(2)" id="pinkModeToggle">
     <label for="pinkModeToggle" id="pinktoggleLabel">Pink<span>
     </span></label>
+    <label for="pinkModeInput" class="hiddenInput">Pink mode</label>
     <input class="hiddenInput" type="text" id="pinkModeInput" disabled>
 
     <header class="header">
@@ -55,7 +56,7 @@
             <h3>Statisztika - Hány perc elolvasni a cikket?</h3>
             <div id="readingTime"></div>
             <ul></ul>
-            <span class="SearchLabel">Itt tudsz keresni az összes cikkekben: </span>
+            <Label for="searchBox" class="SearchLabel">Itt tudsz keresni az összes cikkekben: </label>
             <span class="SearchLabel"><input type="text" id="searchBox" placeholder="Keresés a cikkekben..."></span>
             <p>Ha nem akarsz olvasni, mehetünk a footerre is. <button onclick="location.href='#footer'" type="button">Katt ide</button></p>
             
@@ -68,7 +69,7 @@
         </div>
         <div id="articleSearch">
                 <div id="articleOne">
-                    <p class="parag">A <b>front-end webfejlesztők</b> azok, akik a weboldal felhasználói felületéért felelnek. 
+                    <p class="parag">A <strong>front-end webfejlesztők</strong> azok, akik a weboldal felhasználói felületéért felelnek. 
                         Ők azok, akik az alkalmazások és weboldalak különböző részeinek kinézetét, kezelőfelületét
                         és felépítését tervezik és implementálják. 
                         <br>
@@ -95,9 +96,9 @@
                     </p>
                     <hr>
                         <blockquote>
-                            <i>Összességében a webfejlesztők fontos szerepet töltenek be a digitális világban. Ők azok, akik lehetővé 
+                            <em>Összességében a webfejlesztők fontos szerepet töltenek be a digitális világban. Ők azok, akik lehetővé 
                             teszik, hogy a webalkalmazások és weboldalak működjenek, és a felhasználók számára intuitív és kényelmes 
-                            élményt nyújtsanak.</i>
+                            élményt nyújtsanak.</em>
                         </blockquote>
                     <hr>    
                 </div>

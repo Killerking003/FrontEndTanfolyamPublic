@@ -312,7 +312,7 @@ body {
 }
 
 #readingTime {
-    color: rgb(0, 192, 192);
+    color: #009688;
 }
 
 
@@ -325,6 +325,7 @@ body {
 .SearchLabel {
     padding: 0px 1px;
     margin-top: 20px;
+    width: 298px;
 }
 
 
