@@ -21,6 +21,7 @@ body {
     --whitelight: #929191;
     --grassgreen: #417e3f;
     --whitelight: #c6c6c6;
+    --DeepGreen: #124642;
 } 
 
 .hiddenInput {
@@ -368,7 +369,7 @@ body {
 .contentOne {
     margin-top: 0px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background-color: var(--gray);
+    background-color: var(--DeepGreen); /*var(--gray);*/
     color: #fff;
     padding: 12px 16px;
     font-weight: 300;
@@ -468,7 +469,7 @@ button {
 /*Form styles*/
 
 .formOne {
-    background-color: var(--green);
+    background-color: var(--DeepGreen);
     margin: 20px 20px;
 }
 
@@ -861,9 +862,10 @@ textarea {
     :root {
         --green: #000000;
         --gray: #000000;
-        --black: #080808;;
+        --black: #080808;
         --orange: #9b9b9b;
         --grayart: var(--black);
+        --DeepGreen: #080808;
    }
 
    body {
