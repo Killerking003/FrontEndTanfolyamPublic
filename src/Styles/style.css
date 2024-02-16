@@ -11,7 +11,7 @@ body {
     --green: #257565;
     --gray: #5b5c5d;
     --black: #000000;
-    --orange: #df9945;
+    --orange: #df7a00;
     --Pink: #cd5dda;
     --grayart: #cfcfcf;
     --selectedColor: rgb(142, 181, 44);
@@ -312,7 +312,7 @@ body {
 }
 
 #readingTime {
-    color: #009688;
+    color: #3aef40;
 }
 
 
@@ -345,7 +345,7 @@ body {
 }
 
 #footer button {
-    background-color: #dcc160;
+    background-color: #df7a00;
     border-radius: 5px;
     border: 0;
     box-sizing: border-box;
