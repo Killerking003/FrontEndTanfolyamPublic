@@ -58,13 +58,13 @@
             <ul></ul>
             <Label for="searchBox" class="SearchLabel">Itt tudsz keresni az összes cikkekben: </label>
             <span class="SearchLabel"><input type="text" id="searchBox" placeholder="Keresés a cikkekben..."></span>
-            <p>Ha nem akarsz olvasni, mehetünk a footerre is. <button onclick="location.href='#footer'" type="button">Katt ide</button></p>
+            <p>Ha nem akarsz olvasni, mehetünk a footerre is. <button onclick="location.href='#footer'" type="button" aria-label="Ugrás a footerre">Katt ide</button></p>
             
             <p><u>További linkek:</u></p>       
                 <nav>
-                    <button onclick="location.href='#articleTwo'" type="button">1. Mi a különbség a webdesigner és a webfejlesztő között?</button>
+                    <button onclick="location.href='#articleTwo'" type="button" aria-label="Ugrás a kettes cikkre">1. Mi a különbség a webdesigner és a webfejlesztő között?</button>
                     <br>
-                    <button onclick="location.href='#articleThree'" type="button">2. Hogyan zajlik egy webdesign projekt?</button>
+                    <button onclick="location.href='#articleThree'" type="button" aria-label="Ugrás a hármas cikkre">2. Hogyan zajlik egy webdesign projekt?</button>
                 </nav> 
         </div>
         <div id="articleSearch">
@@ -192,7 +192,7 @@
                     <textarea name="message" id="messageInput" maxlength="80"  class="form-control" placeholder="Írj be valamit... max 80 karakter"></textarea>
                 </div>
                 <div id="submitID">
-                    <button type="submit" class="btn btn-danger">Küldés</button>
+                    <button type="submit" class="btn btn-danger" aria-label="Küldés gomb">Küldés</button>
                 </div>    
             </form>
         </div>    
