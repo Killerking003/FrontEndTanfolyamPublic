@@ -11,9 +11,9 @@ body {
     --green: #257565;
     --gray: #5b5c5d;
     --black: #000000;
-    --orange: #df9945;
+    --orange: #b36200;
     --Pink: #cd5dda;
-    --grayart: #cfcfcf;
+    --grayart: #7f7f7f;
     --selectedColor: rgb(142, 181, 44);
     color-scheme: dark;
     color-scheme: light;
@@ -21,6 +21,7 @@ body {
     --whitelight: #929191;
     --grassgreen: #417e3f;
     --whitelight: #c6c6c6;
+    --DeepGreen: #124642;
 } 
 
 .hiddenInput {
@@ -312,7 +313,7 @@ body {
 }
 
 #readingTime {
-    color: rgb(0, 192, 192);
+    color: #3aef40;
 }
 
 
@@ -325,6 +326,7 @@ body {
 .SearchLabel {
     padding: 0px 1px;
     margin-top: 20px;
+    width: 298px;
 }
 
 
@@ -344,7 +346,7 @@ body {
 }
 
 #footer button {
-    background-color: #dcc160;
+    background-color: #df7a00;
     border-radius: 5px;
     border: 0;
     box-sizing: border-box;
@@ -367,7 +369,7 @@ body {
 .contentOne {
     margin-top: 0px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background-color: var(--gray);
+    background-color: var(--DeepGreen); /*var(--gray);*/
     color: #fff;
     padding: 12px 16px;
     font-weight: 300;
@@ -467,7 +469,7 @@ button {
 /*Form styles*/
 
 .formOne {
-    background-color: var(--green);
+    background-color: var(--DeepGreen);
     margin: 20px 20px;
 }
 
@@ -860,9 +862,10 @@ textarea {
     :root {
         --green: #000000;
         --gray: #000000;
-        --black: #080808;;
-        --orange: #9b9b9b;
+        --black: #080808;
+        --orange: #626262;
         --grayart: var(--black);
+        --DeepGreen: #080808;
    }
 
    body {
