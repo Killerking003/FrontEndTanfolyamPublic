@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freja - Kolaboratív Zenei Szövegszerkesztő</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 95vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .header-info {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4ade80;
+        }
+
+        .status-dot.connecting {
+            background: #fbbf24;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .editor-section {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .editor-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow: hidden;
+        }
+
+        .editor-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow: hidden;
+        }
+
+        .editor-label {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        #lyrics {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: none;
+            overflow-y: auto;
+            transition: border-color 0.3s ease;
+        }
+
+        #lyrics:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .sidebar {
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+        }
+
+        .info-card {
+            background: #f9fafb;
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-card-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .info-card-content {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .share-link-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .share-link-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 12px;
+            font-family: monospace;
+            word-break: break-all;
+            background: white;
+            color: #333;
+            max-height: 60px;
+            overflow-y: auto;
+            resize: none;
+        }
+
+        .footer {
+            background: #f9fafb;
+            padding: 15px 20px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .char-count {
+            font-weight: 600;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .modal-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .share-code {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            word-break: break-all;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .share-code:hover {
+            background: #e0e0e0;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-modal {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+
+        .btn-cancel {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-cancel:hover {
+            background: #e0e0e0;
+        }
+
+        .collaborators {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .collaborator {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.success {
+            background: #4ade80;
+        }
+
+        .toast.error {
+            background: #ef4444;
+        }
+
+        @media (max-width: 768px) {
+            .editor-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎵 Freja</h1>
+            <div class="header-info">
+                <div class="status-indicator">
+                    <div class="status-dot" id="statusDot"></div>
+                    <span id="statusText">Helyi szerkesztés</span>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-secondary" onclick="generateShareLink()">🔗 Megosztás</button>
+                    <button class="btn btn-secondary" onclick="downloadLyrics()">⬇️ Letöltés</button>
+                    <button class="btn btn-secondary" onclick="clearAll()">🗑️ Törlés</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="editor-section">
+            <div class="editor-main">
+                <div class="editor-panel">
+                    <div class="editor-label">Zenei szöveg</div>
+                    <textarea id="lyrics" placeholder="Írja ide a zenei szöveget..."></textarea>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="info-card">
+                    <div class="info-card-title">📊 Statisztika</div>
+                    <div class="info-card-content">
+                        <div>Karakterek: <span id="charCount">0</span></div>
+                        <div>Sorok: <span id="lineCount">0</span></div>
+                        <div>Szavak: <span id="wordCount">0</span></div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">👥 Közreműködők</div>
+                    <div class="info-card-content">
+                        <div id="collabList">
+                            <div class="collaborators">
+                                <div class="collaborator" title="Te">TE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">💡 Tipp</div>
+                    <div class="info-card-content">
+                        Kattintson a "Megosztás" gombra egy link létrehozásához, amit másoknak is elküldhetsz. Az önműködő mentés minden 2 másodpercenként megtörténik.
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">🔄 Szinkronizáció</div>
+                    <div class="info-card-content">
+                        Az adatok helyben kerülnek tárolásra. A megosztási linkek segítségével tudod a szöveget másokkal szerkeszteni.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="char-count">Utolsó mentés: <span id="lastSaved">most</span></div>
+            <div>Freja v1.0 - Kolaboratív szövegszerkesztő</div>
+        </div>
+    </div>
+
+    <!-- Megosztás Modal -->
+    <div class="modal" id="shareModal">
+        <div class="modal-content">
+            <div class="modal-title">Szöveg megosztása</div>
+            <div class="modal-text">
+                Az alábbi link másolatát elküldheted másoknak, hogy közösen szerkeszthessék a szöveget. A link tartalmazza a jelenlegi tartalmat.
+            </div>
+            <div class="share-code" id="shareCode" onclick="copyShareLink()">Kattintson a másoláshoz...</div>
+            <div class="share-link-container">
+                <textarea class="share-link-input" id="shareLinkText" readonly></textarea>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-modal btn-primary" onclick="copyShareLink()">📋 Másolás</button>
+                <button class="btn-modal btn-cancel" onclick="closeModal('shareModal')">Bezárás</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'freja_lyrics';
+        const AUTO_SAVE_INTERVAL = 2000;
+        let lastSaveTime = Date.now();
+        let saveTimeout;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFromStorage();
+            updateStats();
+            setupAutoSave();
+            
+            // Check for shared content in URL
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('data')) {
+                try {
+                    const data = JSON.parse(atob(params.get('data')));
+                    if (data.lyrics) {
+                        document.getElementById('lyrics').value = data.lyrics;
+                        saveToStorage();
+                        showToast('✅ Megosztott szöveg betöltve!', 'success');
+                    }
+                } catch (e) {
+                    console.error('Error loading shared data:', e);
+                }
+            }
+        });
+
+        // Load from localStorage
+        function loadFromStorage() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    document.getElementById('lyrics').value = data.lyrics || '';
+                } catch (e) {
+                    console.error('Error loading data:', e);
+                }
+            }
+        }
+
+        // Save to localStorage
+        function saveToStorage() {
+            const lyrics = document.getElementById('lyrics').value;
+            const data = { lyrics, timestamp: Date.now() };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            lastSaveTime = Date.now();
+            updateLastSaved();
+        }
+
+        // Auto-save functionality
+        function setupAutoSave() {
+            document.getElementById('lyrics').addEventListener('input', () => {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(() => {
+                    saveToStorage();
+                    updateStats();
+                }, AUTO_SAVE_INTERVAL);
+                updateStats();
+            });
+        }
+
+        // Update statistics
+        function updateStats() {
+            const text = document.getElementById('lyrics').value;
+            const chars = text.length;
+            const lines = text.split('\n').length;
+            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+
+            document.getElementById('charCount').textContent = chars.toLocaleString('hu-HU');
+            document.getElementById('lineCount').textContent = lines;
+            document.getElementById('wordCount').textContent = words.toLocaleString('hu-HU');
+        }
+
+        // Update last saved time
+        function updateLastSaved() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('hu-HU', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('lastSaved').textContent = timeString;
+        }
+
+        // Generate share link
+        function generateShareLink() {
+            const lyrics = document.getElementById('lyrics').value;
+            const data = { lyrics };
+            const encoded = btoa(JSON.stringify(data));
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareUrl = `${baseUrl}?data=${encoded}`;
+
+            document.getElementById('shareCode').textContent = shareUrl;
+            document.getElementById('shareLinkText').value = shareUrl;
+            document.getElementById('shareModal').classList.add('active');
+
+            showToast('🔗 Megosztási link létrehozva!', 'success');
+        }
+
+        // Copy share link
+        function copyShareLink() {
+            const shareUrl = document.getElementById('shareLinkText').value;
+            if (shareUrl) {
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    showToast('📋 Link vágólapra másolva!', 'success');
+                });
+            }
+        }
+
+        // Download lyrics
+        function downloadLyrics() {
+            const lyrics = document.getElementById('lyrics').value;
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(lyrics));
+            element.setAttribute('download', `zenei_szoveg_${new Date().toISOString().slice(0, 10)}.txt`);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+            showToast('⬇️ Letöltés megkezdve!', 'success');
+        }
+
+        // Clear all
+        function clearAll() {
+            if (confirm('Biztosan törölni szeretnéd az összes szöveget? Ez nem vonható vissza!')) {
+                document.getElementById('lyrics').value = '';
+                localStorage.removeItem(STORAGE_KEY);
+                updateStats();
+                showToast('🗑️ Szöveg törölve!');
+            }
+        }
+
+        // Modal functions
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Close modal on background click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+
+        // Toast notification
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideIn 0.3s ease reverse';
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                saveToStorage();
+                showToast('💾 Mentve!', 'success');
+            }
+        });
+
+        // Periodically update last saved time
+        setInterval(updateLastSaved, 1000);
+    </script>
+</body>
+</html>

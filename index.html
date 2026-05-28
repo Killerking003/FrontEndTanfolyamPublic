@@ -10,20 +10,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link id="theme" rel="stylesheet" type="text/css" href="src/Styles/style.css"> 
-    
-</head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-74XVKHFCES"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-74XVKHFCES"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-74XVKHFCES');
-</script>
+        gtag('config', 'G-74XVKHFCES');
+    </script>
+</head>
 
 <body>
-    <!-- <img src="src/svg/bat.svg"> -->
     <input type="checkbox" id="resetToggle" onchange="resetInputs()">
     <label for="resetToggle" id="greentogglelabel">Default<span>
     </span></label>
@@ -31,18 +29,20 @@
     <input class="darkmode" type="checkbox" onchange="toggleInput(1)" id="darkModeToggle">
     <label for="darkModeToggle" id="toggleLabel">Green<span>
     </span></label>
+    <label for="darkModeInput" class="hiddenInput">Dark mode</label>
     <input class="hiddenInput" type="text" id="darkModeInput" disabled>
     
     <input class="pinkmode" type="checkbox" onchange="toggleInput(2)" id="pinkModeToggle">
     <label for="pinkModeToggle" id="pinktoggleLabel">Pink<span>
     </span></label>
+    <label for="pinkModeInput" class="hiddenInput">Pink mode</label>
     <input class="hiddenInput" type="text" id="pinkModeInput" disabled>
 
     <header class="header">
-        <a href="index.html" class="logo">NAV</a>
+        <a href="index.html" class="logo" aria-label="home logo gomb">NAV</a>
         <!-- icon -->
         <input class="side-menu" type="checkbox" id="side-menu"/> <!-- Side menü még alakulóban, kitalálás alatt -->
-        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <label class="hamb" for="side-menu" aria-label="Side menű"><span class="hamb-line"></span></label>
         <nav class="nav">
             <ul class="menu">
                 <li><a href="https://www.w3schools.com/whatis/whatis_css.asp" target="_blank">Mi a CSS?</a></li>
@@ -52,23 +52,24 @@
         </nav>
     </header>
         <div class="contentOne">
-            <h3>Statisztika - Hány perc elolvasni a cikket?</h3>
+            <h1 id="h1top">Ez egy Cikk a front-end webfejlesztésről</h1>
+            <p>Statisztika - Hány perc elolvasni a cikket?</p>
             <div id="readingTime"></div>
             <ul></ul>
-            <span class="SearchLabel">Itt tudsz keresni az összes cikkekben: </span>
+            <Label for="searchBox" class="SearchLabel">Itt tudsz keresni az összes cikkekben: </label>
             <span class="SearchLabel"><input type="text" id="searchBox" placeholder="Keresés a cikkekben..."></span>
-            <p>Ha nem akarsz olvasni, mehetünk a footerre is. <button onclick="location.href='#footer'" type="button">Katt ide</button></p>
+            <p>Ha nem akarsz olvasni, mehetünk a footerre is. <button onclick="location.href='#footer'" type="button" aria-label="Ugrás a footerre">Katt ide</button></p>
             
             <p><u>További linkek:</u></p>       
                 <nav>
-                    <button onclick="location.href='#articleTwo'" type="button">1. Mi a különbség a webdesigner és a webfejlesztő között?</button>
+                    <button onclick="location.href='#articleTwo'" type="button" aria-label="Ugrás a kettes cikkre">1. Mi a különbség a webdesigner és a webfejlesztő között?</button>
                     <br>
-                    <button onclick="location.href='#articleThree'" type="button">2. Hogyan zajlik egy webdesign projekt?</button>
+                    <button onclick="location.href='#articleThree'" type="button" aria-label="Ugrás a hármas cikkre">2. Hogyan zajlik egy webdesign projekt?</button>
                 </nav> 
         </div>
         <div id="articleSearch">
                 <div id="articleOne">
-                    <p class="parag">A <b>front-end webfejlesztők</b> azok, akik a weboldal felhasználói felületéért felelnek. 
+                    <p class="parag">A <strong>front-end webfejlesztők</strong> azok, akik a weboldal felhasználói felületéért felelnek. 
                         Ők azok, akik az alkalmazások és weboldalak különböző részeinek kinézetét, kezelőfelületét
                         és felépítését tervezik és implementálják. 
                         <br>
@@ -95,9 +96,9 @@
                     </p>
                     <hr>
                         <blockquote>
-                            <i>Összességében a webfejlesztők fontos szerepet töltenek be a digitális világban. Ők azok, akik lehetővé 
+                            <em>Összességében a webfejlesztők fontos szerepet töltenek be a digitális világban. Ők azok, akik lehetővé 
                             teszik, hogy a webalkalmazások és weboldalak működjenek, és a felhasználók számára intuitív és kényelmes 
-                            élményt nyújtsanak.</i>
+                            élményt nyújtsanak.</em>
                         </blockquote>
                     <hr>    
                 </div>
@@ -191,7 +192,7 @@
                     <textarea name="message" id="messageInput" maxlength="80"  class="form-control" placeholder="Írj be valamit... max 80 karakter"></textarea>
                 </div>
                 <div id="submitID">
-                    <button type="submit" class="btn btn-danger">Küldés</button>
+                    <button type="submit" class="btn btn-danger" aria-label="Küldés gomb">Küldés</button>
                 </div>    
             </form>
         </div>    
@@ -203,7 +204,7 @@
                 <hr>
                 <p>© 2023 Tamás Molnár - All Rights Reserved.</p>
                 <div class="visszaBtn">
-                    <div><span><a href="#top">Home</a></span></div>
+                    <div><span><a href="#h1top">Home</a></span></div>
                 </div>  
         </footer>
     
@@ -331,7 +332,7 @@
                 // Új elemet létrehozom és elmentem (itt stílust is tudok definiálni és propertyket megadni. Szerzőnél csináltam egy példát rá)
                 let RandomSzerzoElem  = document.createElement('div');
                 RandomSzerzoElem.innerHTML = `
-                    <p style="color:#56b3ed;  font-weight: 600;">Szerző:<p>
+                    <p style="color:#06ffcd;  font-weight: 600;">Szerző:<p>
                     <p>Név: ${randomFelhasznalo.name}</p>
                     <p>E-mail: <a href="mailto:${randomFelhasznalo.email}">${randomFelhasznalo.email}</a></p>
                     <p>Telefonszám: ${randomFelhasznalo.phone}</p>
